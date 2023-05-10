@@ -1,0 +1,90 @@
+{
+  "firma_adi": "Kader Pastanesi",
+  "logo": "assets/img/logo.png",
+  "karsilama_metni": "Kader Pastanesi'ne hoşgeldiniz! Bu sayfa üzerinden menümüzü inceleyebilirsiniz.",
+  "footer_metni": "© 2023 Kader Pastanesi. Tüm hakları saklıdır.",
+  "menu": {
+    "Hamburgerler": [
+      {
+        "ad": "Classic Hamburger",
+        "fiyat": "20 TL",
+        "aciklama": "Leziz bir köfte, taze yeşillikler, cheddar peyniri, turşu ve sos ile hazırlanmış hamburger.",
+        "resim": "assets/img/urun.jpg"
+      },
+      {
+        "ad": "Double Cheeseburger",
+        "fiyat": "25 TL",
+        "aciklama": "İki leziz köfte, taze yeşillikler, cheddar ve pepperjack peynirleri, turşu ve sos ile hazırlanmış hamburger.",
+        "resim": "assets/img/urun.jpg"
+      },
+      {
+        "ad": "Vegan Burger",
+        "fiyat": "22 TL",
+        "aciklama": "Sebzeler, soya proteini, vegan mayonez ve taze yeşilliklerle hazırlanmış vegan burger.",
+        "resim": "assets/img/urun.jpg"
+      }
+    ],
+    "Makarnalar": [
+      {
+        "ad": "Spagetti Bolognese",
+        "fiyat": "25 TL",
+        "aciklama": "Taze spagetti, domates soslu kıymalı sos ve parmesan peyniri ile hazırlanmış makarna.",
+        "resim": "assets/img/urun.jpg"
+      },
+      {
+        "ad": "Fettucine Alfredo",
+        "fiyat": "30 TL",
+        "aciklama": "Taze fettucine, krema sosu ve parmesan peyniri ile hazırlanmış makarna.",
+        "resim": "assets/img/urun.jpg"
+      }
+    ],
+    "Et Yemekleri": [
+      {
+        "ad": "Izgara Biftek",
+        "fiyat": "45 TL",
+        "aciklama": "Kaliteli dana eti, ızgara sebzeler, taze baharatlar ve özel sos ile hazırlanmış nefis biftek.",
+        "resim": "assets/img/urun.jpg"
+      },
+      {
+        "ad": "Kuzu Pirzola",
+        "fiyat": "50 TL",
+        "aciklama": "Lezzetli kuzu pirzola, ızgara sebzeler ve özel sos ile servis edilir.",
+        "resim": "assets/img/urun.jpg"
+      }
+    ],
+    "Salatalar": [
+      {
+        "ad": "Çoban Salata",
+        "fiyat": "15 TL",
+        "aciklama": "Taze sebzeler, zeytin, peynir ve baharatlar ile hazırlanmış geleneksel çoban salatası.",
+        "resim": "assets/img/urun.jpg"
+      },
+      {
+        "ad": "Mevsim Salatası",
+        "fiyat": "18 TL",
+        "aciklama": "Taze mevsim sebzeleri, ceviz, peynir ve özel sos ile hazırlanmış harika bir salata.",
+        "resim": "assets/img/urun.jpg"
+      }
+    ],
+    "İçecekler": [
+      {
+        "ad": "Coca-Cola",
+        "fiyat": "5 TL",
+        "aciklama": "Soğuk Coca-Cola kutusu (330 ml).",
+        "resim": "assets/img/urun.jpg"
+      },
+      {
+        "ad": "Fanta",
+        "fiyat": "5 TL",
+        "aciklama": "Soğuk Fanta kutusu (330 ml).",
+        "resim": "assets/img/urun.jpg"
+      },
+      {
+        "ad": "Su",
+        "fiyat": "2 TL",
+        "aciklama": "Soğuk su (500 ml).",
+        "resim": "assets/img/urun.jpg"
+      }
+    ]
+  }
+}

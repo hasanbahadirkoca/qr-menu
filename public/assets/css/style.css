@@ -1,0 +1,272 @@
+/* Antonio Light */
+@import url("https://fonts.googleapis.com/css?family=Antonio:300&display=swap");
+/* Inter */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+/* General Styles */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Antonio", sans-serif;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+  color: #3e3d3f;
+  border: 20px solid #eec78e;
+  box-sizing: border-box;
+}
+
+
+
+/* Animasyonlu yükleme */
+#loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+#loader.hide {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease-in-out;
+}
+
+#loader div {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #eec78e;
+  animation: scale 2s ease-in-out infinite;
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+
+
+
+
+
+a {
+  text-decoration: none;
+}
+
+/* Header */
+
+header {
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Logo */
+
+#logo {
+  margin: 2rem 0;
+  max-width: 20vw;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Main */
+
+main {
+  max-width: 40%;
+  margin: 0 auto;
+}
+
+/* Section */
+
+section {
+  margin-bottom: 2rem;
+}
+
+/* Section Title */
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 3px;
+  margin-bottom: 1rem;
+  position: relative;
+}
+h2::before,
+h2::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 10vw;
+  height: 2px;
+  background-color: #eec78e;
+}
+h2::before {
+  left: 0;
+}
+
+h2::after {
+  right: 0;
+}
+
+/* Welcome Text */
+.welcome-text {
+  font-family: "Inter", sans-serif;
+  font-size: 1.2rem;
+  margin: 0;
+  margin-bottom: 4rem;
+}
+
+/* Menu Category */
+
+.menu-category {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Menu Item */
+
+.menu-item {
+  font-family: "Inter", sans-serif;
+  display: flex;
+  text-align: left;
+  margin: 2rem 0; /* top, bottom -> 2rem */
+  border-radius: 20px;
+  border: 5px solid #eec78e;
+  padding: 0.8rem;
+}
+
+/* Menu Item Image */
+
+.menu-item img {
+  margin-right: 1rem;
+  max-width: 35%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-item img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Menu Item Info */
+
+.menu-item-info {
+  flex-grow: 1;
+}
+
+/* Menu Item Name */
+
+.menu-item-info h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+
+/* Menu Item Price */
+
+.menu-item-info span {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+/* Menu Item Description */
+
+.menu-item-info p {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1.2rem;
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+
+/* Footer */
+
+footer {
+  background-color: #f8f8f8;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Footer Text */
+
+#footer {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+/* Media Query for Mobile */
+@media only screen and (max-width: 767px) {
+
+  body {
+    text-align: center;
+  }
+
+  main {
+    max-width: 90%;
+  }
+
+  #logo {
+    max-width: 50vw;
+  }
+
+  /* Menu Category */
+  .menu-category {
+    margin-bottom: 1.5rem;
+  }
+
+  /* Menu Item */
+  .menu-item {
+    display: block;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .menu-item img {
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  /* Menu Item Name */
+  .menu-item-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+  }
+
+  /* Menu Item Price */
+  .menu-item-info span {
+    font-size: 1.2rem;
+    margin-right: 0;
+    margin-bottom: 0.3rem;
+  }
+
+  /* Menu Item Description */
+  .menu-item-info p {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+}
