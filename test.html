@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Panel Example</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .panel {
+            width: 400px;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .panel h1 {
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .panel input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .panel button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .panel button:hover {
+            background-color: #45a049;
+        }
+
+        .panel ul {
+            list-style-type: none;
+            padding: 0;
+            overflow-y: auto;
+            max-height: 200px;
+        }
+
+        .panel li {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: #e6e6e6;
+            margin-bottom: 5px;
+        }
+
+        .panel .category-name {
+            flex-grow: 1;
+        }
+
+        .panel .category-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .panel .category-actions button {
+            margin-left: 5px;
+            padding: 5px;
+            background-color: #ccc;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="panel">
+        <h1>Add Category</h1>
+        <input type="text" id="categoryInput" placeholder="Enter a category">
+        <button id="addButton">Add</button>
+        <ul id="categoryList"></ul>
+    </div>
+
+    <script>
+        // JavaScript kodu
+        const addButton = document.getElementById('addButton');
+        const categoryInput = document.getElementById('categoryInput');
+        const categoryList = document.getElementById('categoryList');
+
+        addButton.addEventListener('click', function () {
+            const category = categoryInput.value;
+            if (category !== '') {
+                const li = createCategoryItem(category);
+                categoryList.appendChild(li);
+                categoryInput.value = '';
+            }
+        });
+
+        function createCategoryItem(category) {
+            const li = document.createElement('li');
+            li.classList.add('category-item');
+
+            const nameSpan = document.createElement('span');
+            nameSpan.classList.add('category-name');
+            nameSpan.textContent = category;
+            li.appendChild(nameSpan);
+
+            const actionsSpan = document.createElement('span');
+            actionsSpan.classList.add('category-actions');
+
+            const upButton = document.createElement('button');
+            upButton.textContent = '▲';
+            upButton.addEventListener('click', moveCategoryUp);
+            actionsSpan.appendChild(upButton);
+            const downButton = document.createElement('button');
+            downButton.textContent = '▼';
+            downButton.addEventListener('click', moveCategoryDown);
+            actionsSpan.appendChild(downButton);
+
+            li.appendChild(actionsSpan);
+
+            return li;
+        }
+
+        function moveCategoryUp(event) {
+            const categoryItem = event.target.closest('.category-item');
+            if (categoryItem.previousElementSibling) {
+                categoryItem.parentNode.insertBefore(categoryItem, categoryItem.previousElementSibling);
+            }
+        }
+
+        function moveCategoryDown(event) {
+            const categoryItem = event.target.closest('.category-item');
+            if (categoryItem.nextElementSibling) {
+                categoryItem.parentNode.insertBefore(categoryItem.nextElementSibling, categoryItem);
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,8 +1,8 @@
 {
-  "firma_adi": "Kader Pastanesi",
+  "company_name": "Kader Pastanesi",
   "logo": "assets/img/logo.png",
-  "karsilama_metni": "Kader Pastanesi'ne hoşgeldiniz! Bu sayfa üzerinden menümüzü inceleyebilirsiniz.",
-  "footer_metni": "© 2023 Kader Pastanesi. Tüm hakları saklıdır.",
+  "welcome_text": "Kader Pastanesi'ne hoşgeldiniz! Bu sayfa üzerinden menümüzü inceleyebilirsiniz.",
+  "footer_text": "© 2023 Kader Pastanesi. Tüm hakları saklıdır.",
   "menu": {
     "Hamburgerler": [
       {

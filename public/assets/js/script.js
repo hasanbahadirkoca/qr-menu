@@ -1,16 +1,25 @@
-// JSON dosyasını al
+// [TR] JSON dosyasını oku.
+// [EN] Read JSON file.
 fetch("assets/json/test.json")
   .then((response) => response.json())
   .then((data) => {
-    // Firma Logosu
+
+    // [TR] Firma adı
+    // [EN] Company name
+    document.title = data.company_name + " Menü"
+
+    // [TR] Firma logosu
+    // [EN] Company logo
     const logo = document.getElementById("logo");
     logo.setAttribute("src", data.logo);
 
-    // Karşılama Metni
-    document.getElementById("karsilama").textContent = data.karsilama_metni;
+    // [TR] Karşılama Metni
+    // [EN] Welcome Message
+    document.getElementById("karsilama").textContent = data.welcome_text;
 
-    // Footer Metni
-    document.getElementById("footer").textContent = data.footer_metni;
+    // [TR] Footer Metni
+    // [EN] Footer Text
+    document.getElementById("footer").textContent = data.footer_text;
 
     // Menu
     const menuDiv = document.getElementById("menu");

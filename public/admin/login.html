@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Paneli | QR Menu</title>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f1f1f1;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        .form-container {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 400px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            justify-content: center;
+        }
+
+        .form-container input[type="tel"],
+        .form-container input[type="text"]{
+            width: 94%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+        }
+
+        .form-container button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+
+        #recaptcha-container {
+            width: 90%;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="./assets/js/config.js"></script>
+    <script src="./assets/js/login.js"></script>
+    <div class="form-container" id="register">
+        <h1>Giriş</h1>
+        <input type="tel" name="phone" id="num" placeholder="Sisteme kayıtlı telefon numaranızı giriniz." onkeyup="formatPhoneNumber()" pattern="[+0-9]+" required>
+        <br />
+        <br />
+        <div id="recaptcha-container"></div>
+        <br />
+        <button onclick="sendnumber()">Kod Gönder</button>
+    </div>
+
+    <div class="form-container" id="verify" style="display: none;">
+        <h1>Doğrulama</h1>
+        <br />
+        <input type="tel" id="verificationcode" placeholder="Doğrulama kodunu giriniz.">
+        <br />
+        <br />
+        <button onclick="verifyUser()">Doğrula</button>
+    </div>
+
+</body>
+
+</html>

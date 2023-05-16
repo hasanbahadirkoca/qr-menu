@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase.js"></script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yönetim Paneli | QR Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f1f1f1;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 400px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .container p {
+            margin-bottom: 10px;
+        }
+
+        .container input {
+            width: 94%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+        }
+
+        .container button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .container button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="./assets/js/config.js"></script>
+    <script>
+        function logout() {
+            // Firebase'den çıkış işlemi gerçekleştirin
+            firebase.auth().signOut().then(() => {
+                // Çıkış başarılı
+            }).catch((error) => {
+                console.log(error);
+            });
+        }
+    </script>
+
+    <div class="container">
+        <h1>Yönetim Paneli</h1>
+        <p id="state"></p>
+        <input type="text" id="authorizedName" placeholder="Yetkili Adı">
+        <button id="saveBtn" onclick="saveUserName()">Kaydet</button>
+        <br><br><br>
+        <input type="text" id="companyName" placeholder="Kuruluş Adı">
+        <input type="text" id="companyUserName" placeholder="Kuruluş Kullanıcı Adı">
+        <br><br><br>
+        <button id="logoutBtn" onclick="logout()">Çıkış Yap</button>
+    </div>
+
+    <script>
+        function saveUserName() {
+            const authorizedName = document.getElementById("authorizedName").value;
+
+            const user = firebase.auth().currentUser;
+
+            user.updateProfile({
+                displayName: authorizedName,
+            }).then(() => {
+                // Update successful
+                alert("Yetkili adı kaydedildi.");
+                // ...
+            }).catch((error) => {
+                // An error occurred
+                console.error(error);
+                // ...
+            });
+        }
+    </script>
+
+    <script>
+        // Sayfa yüklendiğinde yetkili adını cookie'den al ve input alanını doldur
+        window.addEventListener('load', function () {
+            var authorizedNameInput = document.getElementById('authorizedName');
+            var authorizedName = getCookie('authorizedName');
+            if (authorizedName) {
+                authorizedNameInput.value = authorizedName;
+            }
+        });
+
+        // Yetkili adı değiştiğinde onkeyup olayıyla çalışacak fonksiyon
+        function handleAuthorizedNameChange() {
+            var authorizedNameInput = document.getElementById('authorizedName');
+            var authorizedName = authorizedNameInput.value;
+
+            // Yetkili adını cookie olarak kaydet
+            setCookie('authorizedName', authorizedName, 365); // 365 gün boyunca geçerli olacak cookie
+
+            // Diğer işlemleri burada yapabilirsiniz
+        }
+
+        // Cookie değerini almak için bir yardımcı fonksiyon
+        function getCookie(name) {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.startsWith(name + '=')) {
+                    return cookie.substring(name.length + 1);
+                }
+            }
+            return '';
+        }
+
+        // Cookie değerini ayarlamak için bir yardımcı fonksiyon
+        function setCookie(name, value, days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            var expires = 'expires=' + date.toUTCString();
+            document.cookie = name + '=' + value + '; ' + expires;
+        }
+
+        // Input alanında her tuşa basıldığında yetkili adı değiştiğinde çalışacak fonksiyonu çağır
+        document.getElementById('authorizedName').addEventListener('keyup', handleAuthorizedNameChange);
+
+    </script>
+
+    <script>
+
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                // Set state text with user name
+                document.getElementById("state").innerHTML = "Hoşgeldin " + user.displayName;
+                console.info(user);
+            }
+        })
+
+    </script>
+</body>
+
+</html>
