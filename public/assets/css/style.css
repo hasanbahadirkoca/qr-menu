@@ -17,6 +17,7 @@ body {
   color: #3e3d3f;
   border: 20px solid #eec78e;
   box-sizing: border-box;
+  text-align: center;
 }
 
 
@@ -99,6 +100,16 @@ main {
 
 section {
   margin-bottom: 2rem;
+}
+
+
+/* Company Name Title */
+h1 {
+  font-size: 2.6rem;
+  font-weight: bold;
+  letter-spacing: 3px;
+  margin-bottom: 1.3rem;
+  position: relative;
 }
 
 /* Section Title */

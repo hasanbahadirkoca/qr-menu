@@ -2,9 +2,12 @@
 <html lang="tr">
 
 <head>
+  <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
+  <script src="admin/assets/js/config.js"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kader Pastanesi - Online Menü</title>
+  <title>Yükleniyor - QR Menü</title>
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
@@ -16,12 +19,12 @@
   <!-- Yükleme animasyonu -->
 
   <header>
-    <img id="logo" alt="Logo">
+    <h1 class="company-name">Firma Adı</h1>
   </header>
   <main>
     <section>
-      <p class="welcome-text" id="karsilama"></p>
-      <div id="menu"></div>
+      <p class="welcome-text"></p>
+      <div class="menu"></div>
     </section>
   </main>
   <footer>

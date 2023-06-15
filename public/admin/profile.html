@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil | QR Menu</title>
+</head>
+
+<body>
+    <script src="./assets/js/config.js"></script>
+
+    <div class="container">
+        <h1>Profil</h1>
+
+        <div class="input-item">
+            <input type="text" id="authorizedName" autocomplete="off" required>
+            <label for="authorizedName">Yetkili Adı</label>
+        </div>
+
+        <div class="input-item">
+            <input type="text" id="phoneNumber" autocomplete="off" required disabled>
+            <label for="phoneNumber">Telefon Numarası</label>
+        </div>
+
+
+        <div class="input-item">
+            <input type="text" id="userID" autocomplete="off" required disabled>
+            <label for="userID">Telefon Numarası</label>
+        </div>
+
+        <button class="button" id="saveBtn" onclick="saveUserName()">Kaydet</button>
+    </div>
+
+    <script>
+
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                // If user is logged in
+                document.getElementById("authorizedName").value = user.displayName;
+
+                // Kullanıcının telefon numarasını doldur
+                const phoneNumber = document.getElementById("phoneNumber");
+                phoneNumber.value = user.phoneNumber;
+                phoneNumber.classList.add('valid');
+
+                // Kullanıcının ID'sini doldur
+                const userID = document.getElementById("userID");
+                userID.value = user.uid;
+                userID.classList.add('valid');
+            }
+        })
+
+
+
+    </script>
+
+    <script>
+        async function saveUserName() {
+            const user = firebase.auth().currentUser;
+            const saveBtn = document.getElementById("saveBtn");
+            const authorizedName = document.getElementById("authorizedName").value;
+            let success = false;
+
+            if (authorizedName.length < 3) {
+                buttonStatus(saveBtn, "En az 3 karakter giriniz");
+                return;
+            } else if (authorizedName.length > 20) {
+                buttonStatus(saveBtn, "En fazla 20 karakter giriniz");
+                return;
+            } else if (/\d/.test(authorizedName)) {
+                buttonStatus(saveBtn, "Sadece harf giriniz");
+                return;
+            }
+
+            buttonStatus(saveBtn, "active");
+
+            await user.updateProfile({
+                displayName: authorizedName,
+            }).then(() => {
+                // Update successful
+                success = true;
+            }).catch((error) => {
+                // An error occurred
+                success = false;
+            });
+
+            await db.collection("users").doc(user.uid).set({
+                displayName: authorizedName,
+                phoneNumber: user.phoneNumber
+            }).then(() => {
+                success = true;
+            }).catch((error) => {
+                success = false;
+            });
+
+            if (success) {
+                buttonStatus(saveBtn, "success");
+            } else {
+                buttonStatus(saveBtn, "error");
+            }
+        }
+
+
+        function buttonStatus(button, state = "active") {
+            const timeout = 1500;
+            button.classList.remove("error");
+            button.classList.remove("active");
+            switch (state) {
+                case "active":
+                    button.classList.add("active");
+                    button.innerHTML = "Kaydediliyor...";
+                    break;
+                case "success":
+                    button.classList.add("success");
+                    button.innerHTML = "Kaydedildi";
+                    setTimeout(() => {
+                        button.classList.remove("success");
+                        button.innerHTML = "Kaydet";
+                    }, timeout);
+                    break;
+                default:
+                    button.classList.add("error");
+                    button.innerHTML = state;
+                    setTimeout(() => {
+                        button.classList.remove("error");
+                        button.innerHTML = "Kaydet";
+                    }, timeout);
+                    break;
+            }
+        }
+    </script>
+    <script src="./theme/script.js"></script>
+</body>
+
+</html>

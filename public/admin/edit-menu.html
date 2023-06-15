@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
+  <link rel="stylesheet" type="text/css" href="./assets/css/edit-menu.css">
+
+  <title>Menü Listesi | TheHBK QR Menü</title>
+</head>
+
+<body>
+  <script src="./assets/js/config.js"></script>
+
+  <div class="container">
+    <h1>Menü Düzenle</h1>
+
+    <div class="input-item">
+      <input type="text" id="menu-name" autocomplete="off" required>
+      <label for="menu-name">Menü Adı</label>
+    </div>
+
+    <div class="input-item">
+      <input type="text" id="welcome-text" autocomplete="off" required>
+      <label for="welcome-text">Karşılama Metni</label>
+    </div>
+
+    <div class="menu-list">
+      <ul class="category-list"></ul>
+      <button class="add-category-button button">KATEGORİ EKLE</button>
+    </div>
+
+    <span class="line"></span>
+    
+    <button class="button" onclick="saveMenu(this)">Kaydet</button>
+  </div>
+
+  <script src="./theme/script.js"></script>
+  <script src="./assets/js/edit-menu.js"></script>
+</body>
+
+</html>

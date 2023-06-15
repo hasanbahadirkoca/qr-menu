@@ -1,0 +1,115 @@
+li {
+  margin: 5px 0;
+}
+/* [TR] List item için üst ve alt marj ayarlar. */
+/* [EN] Sets top and bottom margins for list item. */
+
+.category-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+/* [TR] .category-list sınıfı için liste özelliklerini ve padding ile marginaları ayarlar. */
+/* [EN] Sets list properties and padding and margins for the .category-list class. */
+
+.category-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: transparent;
+  margin: 0 0 20px 0;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+/* [TR] .category-item sınıfı için flexbox özelliklerini, arkaplan rengini, marginaları, paddingi ve border-radius ayarlar. */
+/* [EN] Sets flexbox properties, background color, margins, padding and border-radius for the .category-item class. */
+
+.category-item button {
+  border: none;
+  border-radius: 8px;
+  padding: 5px;
+  margin: 0 2px;
+  cursor: pointer;
+}
+/* [TR] .category-item sınıfının içindeki butonlar için özellikler ayarlar. */
+/* [EN] Sets properties for buttons within the .category-item class. */
+
+.add-category-button,
+.add-subcategory-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+/* [TR] .add-category-button ve .add-subcategory-input sınıfları için genel özellikler ayarlar. */
+/* [EN] Sets general properties for the .add-category-button and .add-subcategory-input classes. */
+
+.add-subcategory-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+/* [TR] .add-subcategory-input sınıfı için özellikler ayarlar. Genişlik, padding ve alt marj gibi. */
+/* [EN] Sets properties for the .add-subcategory-input class. Such as width, padding and bottom margin. */
+
+.category-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+/* [TR] .category-head sınıfı için flexbox özelliklerini, marginaları, paddingi ve alt çerçeveyi ayarlar. */
+/* [EN] Sets flexbox properties, margins, padding and bottom border for the .category-head class. */
+
+.product-item {
+  border-bottom: 1px solid #ccc;
+}
+.product-item:last-child {
+  border-bottom: none;
+}
+
+.product-description, .product-price {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 8px;
+}
+/* [TR] .product-description sınıfı için margin ve paddingi ayarlar. */
+/* [EN] Sets margin and padding for the .product-description class. */
+
+.category-title,
+.category-buttons {
+  display: flex;
+  padding: 6px;
+}
+/* [TR] .category-title ve .category-buttons sınıfları için flexbox özelliklerini ve paddingi ayarlar. */
+/* [EN] Sets flexbox properties and padding for the .category-title and .category-buttons classes. */
+
+.subcategory-item .category-head {
+  border-bottom: 0px;
+  padding: 0px;
+}
+/* [TR] .subcategory-item sınıfının içindeki .category-head sınıfı için alt çerçeve ve paddingi ayarlar. */
+/* [EN] Sets bottom border and padding for the .category-head class within the .subcategory-item class. */
+
+.highlight {
+  border-radius: 8px;
+  animation: highlightBackground 3s;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease-in-out;
+}
+/* [TR] .highlight sınıfı için border-radius ve animasyonu ayarlar. */
+/* [EN] Sets border-radius and animation for the .highlight class. */
+
+@keyframes highlightBackground {
+  0%,
+  100% {
+    background-color: #e6e6e6;
+  }
+  30%,
+  80% {
+    background-color: var(--highlight-color);
+  }
+}
+/* [TR] highlightBackground animasyonunu tanımlar. Animasyon, başlangıç ve bitişte #e6e6e6 rengine, 30% ve 70% zaman dilimlerinde --highlight-color değişkeninde belirtilen renge sahip olur. */
+/* [EN] Defines the highlightBackground animation. The animation has a color of #e6e6e6 at the start and end, and a color as specified in the --highlight-color variable at the 30% and 70% timeframes. */

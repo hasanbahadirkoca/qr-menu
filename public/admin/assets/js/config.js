@@ -1,6 +1,7 @@
 // [TR] Firebase web uygulamanızın yapılandırma bilgileri
 // [EN] Your web app's Firebase configuration
-const firebaseConfig = { // SECRET 
+const firebaseConfig = {
+  // SECRET
   apiKey: "AIzaSyAuCXKt50hv6Etjr48el3qo2k_1L1qNnXo",
   authDomain: "thehbk-qrmenu.firebaseapp.com",
   projectId: "thehbk-qrmenu",
@@ -13,6 +14,10 @@ const firebaseConfig = { // SECRET
 // [EN] Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
+
+// [TR] Firebase veritabanı bağlantısı
+// [EN] Firebase database connection
+const db = firebase.firestore();
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
@@ -40,3 +45,22 @@ firebase.auth().onAuthStateChanged((user) => {
     }
   }
 });
+
+// [TR] Kullanıcı çıkış yapma fonksiyonu
+// [EN] User sign out function
+function signOut() {
+  window.location.href = "./login.html";
+  //return;
+  firebase
+    .auth()
+    .signOut()
+    .then(() => {
+      // [TR] Çıkış başarılı
+      // [EN] Sign-out successful.
+      window.location.href = "./login.html";
+    })
+    .catch((error) => {
+      // [TR] Hata
+      // [EN] An error happened.
+    });
+}
